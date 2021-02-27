@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //原型 prototype 讓物件裡能增加method
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age
+            }
+
+            sayHi() {
+                console.log(`My name is ${this.name} and  I'm ${this.age} years old`);
+            }
+        }
+        let James = new Person('James', '34')
+        console.log(James.sayHi());//My name is James and  I'm 34 years old
+
+        //繼承 extends
+        class boy extends Person {
+            onlyBoy() {
+                console.log(`My name is ${this.name} I'm a boy`);
+            }
+        }
+        let b = new boy("Alex")
+        console.log(b.onlyBoy())//My name is Alex I'm boy
+
+        //使用super時機 當繼承物件也有自己的constructor時(且需要上一層的property時)
+
+        class Human extends Person {
+            constructor(name, age, gender) {
+                super(name, age)
+                this.gender = gender
+            }// gender 只有Human有
+        }
+
+        var apple = new Human('Apple', '18', 'female')
+        console.log(apple)//Human {name: "Apple", age: "18", gender: "female"}
+        console.log(apple.sayHi())//My name is Apple and  I'm 18 years old
+
+
+    </script>
+</body>
+
+</html>
